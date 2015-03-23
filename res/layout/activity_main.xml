@@ -4,14 +4,38 @@
     android:layout_height="match_parent"
     tools:context="${relativePackage}.${activityClass}" >
 
-    <com.nag.android.util.AnimationView
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:src="@drawable/dialindex_ds_0023" />
+
+    <ImageView
+        android:id="@+id/imageHourHand"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:src="@drawable/hourhand_ds_0001" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:src="@drawable/minutehand_ds_0001" />
+
+    <com.nag.android.util.FlipView
         android:id="@+id/animationView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
-        interval="50"
-        source="@drawable/anime"
+        images="@+array/fairy_sample"
+        interval = "100"
         android:src="@drawable/ic_launcher" />
 
 </RelativeLayout>

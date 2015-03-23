@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<array name="flip_images_congraturation">
+	    <item>@drawable/congratulation1</item>
+	    <item>@drawable/congratulation2</item>
+	</array>
+	<array name="fairy_sample">
+        <item>@drawable/fairy_sample_001_000</item>
+        <item>@drawable/fairy_sample_001_001</item>
+        <item>@drawable/fairy_sample_001_002</item>
+        <item>@drawable/fairy_sample_001_003</item>
+        <item>@drawable/fairy_sample_001_004</item>
+        <item>@drawable/fairy_sample_001_005</item>
+        <item>@drawable/fairy_sample_001_006</item>
+        <item>@drawable/fairy_sample_001_007</item>
+        <item>@drawable/fairy_sample_001_008</item>
+        <item>@drawable/fairy_sample_001_009</item>
+        <item>@drawable/fairy_sample_001_010</item>
+        <item>@drawable/fairy_sample_001_011</item>
+        <item>@drawable/fairy_sample_001_012</item>
+        <item>@drawable/fairy_sample_001_013</item>
+        <item>@drawable/fairy_sample_001_014</item>
+        <item>@drawable/fairy_sample_001_015</item>
+    </array>
+</resources>
