@@ -12,7 +12,7 @@
         android:layout_centerVertical="true"
         android:src="@drawable/dialindex_ds_0023" />
 
-    <ImageView
+    <com.nag.android.fairyviewer.HourHandView
         android:id="@+id/imageHourHand"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -35,7 +35,8 @@
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
         images="@+array/fairy_sample"
-        interval = "100"
-        android:src="@drawable/ic_launcher" />
+        interval="100"
+        android:src="@drawable/ic_launcher"
+        android:visibility="gone" />
 
 </RelativeLayout>
