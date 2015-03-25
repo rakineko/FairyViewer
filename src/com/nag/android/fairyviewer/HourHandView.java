@@ -8,6 +8,8 @@ import android.widget.ImageView;
 
 class HourHandView extends ImageView {
 
+	private float current = 0.0f;
+	private float angle = 180.0f;
 	public HourHandView(Context context) {
 		super(context);
 	}
@@ -21,9 +23,11 @@ class HourHandView extends ImageView {
 	}
 
 	public void update(){
+		float next = current + angle;
 		ObjectAnimator objectAnimator = ObjectAnimator.ofPropertyValuesHolder(this
-				, PropertyValuesHolder.ofFloat("rotate", 0.0f, 360.0f)); 
+				, PropertyValuesHolder.ofFloat("rotation", current, next));
 		objectAnimator.setDuration( 3000 );
+		current = next%360;
 		objectAnimator.start();
 	}
 }

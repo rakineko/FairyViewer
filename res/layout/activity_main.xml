@@ -36,7 +36,14 @@
         android:layout_centerVertical="true"
         images="@+array/fairy_sample"
         interval="100"
-        android:src="@drawable/ic_launcher"
-        android:visibility="gone" />
+        android:src="@drawable/ic_launcher" />
+
+    <Button
+        android:id="@+id/button1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:text="Button" />
 
 </RelativeLayout>

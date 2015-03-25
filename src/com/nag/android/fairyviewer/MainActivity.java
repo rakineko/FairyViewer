@@ -1,77 +1,46 @@
 package com.nag.android.fairyviewer;
 
-import java.util.List;
-import java.util.Timer;
-import java.util.TimerTask;
+import com.nag.android.fairyviewer.ShakeManager.OnShakeListener;
 
 import android.app.Activity;
-import android.graphics.drawable.Drawable;
-import android.hardware.Sensor;
-import android.hardware.SensorEvent;
-import android.hardware.SensorEventListener;
-import android.hardware.SensorManager;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.View.OnTouchListener;
-import android.widget.ImageView;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class MainActivity extends Activity implements SensorEventListener {
+public class MainActivity extends Activity implements OnShakeListener {
 
-	private SensorManager manager;
 	private HourHandView hourhand;
+	private ShakeManager shakemanager;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		hourhand = (HourHandView)findViewById(R.id.imageHourHand);
-		start(3000);
-		manager = (SensorManager)getSystemService(SENSOR_SERVICE);	
-	}
-	
-	private Timer timer = null;
-	private void start(int period){
-		timer = new Timer(true);
-		timer.scheduleAtFixedRate(new TimerTask(){
+		findViewById(R.id.button1).setOnClickListener(new OnClickListener(){
 			@Override
-			public void run() {
+			public void onClick(View arg0) {
 				hourhand.update();
-			}}, 0, period);
-	}
-	
-	public void stop(){
-		timer.cancel();
-		timer = null;
-	}
-	
-
-	@Override
-	protected void onStop() {
-		super.onStop();
-		manager.unregisterListener(this);
+			}
+		});
+		shakemanager = new ShakeManager();
+		shakemanager.setOnShakeListener(this);
 	}
 
 	@Override
 	protected void onResume() {
 		super.onResume();
-		List<Sensor> sensors = manager.getSensorList(Sensor.TYPE_ACCELEROMETER);
-		if(sensors.size() > 0) {
-			Sensor s = sensors.get(0);
-			manager.registerListener(this, s, SensorManager.SENSOR_DELAY_UI);
-		}
+		shakemanager.resume(this);
 	}
 
 	@Override
-	public void onAccuracyChanged(Sensor arg0, int arg1) {
+	protected void onStop() {
+		super.onStop();
+		shakemanager.pause();
 	}
 
 	@Override
-	public void onSensorChanged(SensorEvent event) {
-		if(event.sensor.getType() == Sensor.TYPE_ACCELEROMETER) {
-			Log.d("","H:"+event.values[SensorManager.DATA_X]);
-			Log.d("","H:"+event.values[SensorManager.DATA_Y]); 
-			Log.d("","H:"+ event.values[SensorManager.DATA_Z]);
-		}
+	public void onShake() {
+		hourhand.update();
 	}
 }
